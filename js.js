@@ -5,8 +5,7 @@ function changeColor()
     console.log($(this));
     $(".selectedCell").removeClass("selectedCell");
     $(this).addClass("selectedCell");
-    $(this).focus();
-    $(this).click();
+    
 }
 $(document).ready(function() {
     $('td').attr("tabindex", "0");
