@@ -127,17 +127,23 @@ function verifyLine(id) {
     var i = id.substring(0,1) - 1;
     var j = id.substring(1,2) - 1;
     var count = 0;
-    for(var x = 0; x < 9; x++)
-    {
-        if(matrix[i][j] !== "-" && matrix[i][x] === matrix[i][j])
-        {
+    for(var x = 0; x < 9; x++) {
+        if (matrix[i][j] !== "-" && matrix[i][x] === matrix[i][j]) {
             count++;
-            if (count > 0)
-            {
-                    $("#" + (i + 1) + (x + 1)).addClass("redCell");
-            }
         }
     }
+
+        if(count > 1) {
+            count = 0;
+            for(var x = 0; x < 9; x++)
+            if (matrix[i][j] !== "-" && matrix[i][x] === matrix[i][j]) {
+                count++;
+                if (count > 0) {
+                    $("#" + (i + 1) + (x + 1)).addClass("redCell");
+                }
+            }
+        }
+
 }
 
 function deleteRedOnColumn(id)
@@ -178,11 +184,19 @@ function verifyColumn(id) {
     var i = id.substring(0,1) - 1;
     var j = id.substring(1,2) - 1;
     var count = 0;
-    for(var x = 0; x < 9; x++) {
+    for(let x = 0; x < 9; x++) {
         if (matrix[i][j] !== "-" && matrix[x][j] === matrix[i][j]) {
             count++;
-            if (count > 0) {
-                $("#" + (x + 1) + (j + 1)).addClass("redCell");
+        }
+    }
+    if(count > 1) {
+        count = 0;
+        for (let x = 0; x < 9; x++) {
+            if (matrix[i][j] !== "-" && matrix[x][j] === matrix[i][j]) {
+                count++;
+                if (count > 0) {
+                    $("#" + (x + 1) + (j + 1)).addClass("redCell");
+                }
             }
         }
     }
@@ -196,13 +210,20 @@ function verifySquare(id)
     n = parseInt(j/3)*3;
     var count = 0;
     for(let x = m; x < m + 3; x++)
-        for(let y = n; y < n + 3; y++)
-        {
-            if(matrix[i][j] !== "-" && matrix[x][y] === matrix[i][j])
-            {
+        for(let y = n; y < n + 3; y++) {
+            if (matrix[i][j] !== "-" && matrix[x][y] === matrix[i][j]) {
                 count++;
-                if (count > 0)
-                    $("#" + (x + 1) + (y + 1)).addClass("redCell");
             }
         }
+    if(count > 1) {
+        count = 0
+        for (let x = m; x < m + 3; x++)
+            for (let y = n; y < n + 3; y++) {
+                if (matrix[i][j] !== "-" && matrix[x][y] === matrix[i][j]) {
+                    count++;
+                    if (count > 0)
+                        $("#" + (x + 1) + (y + 1)).addClass("redCell");
+                }
+            }
+    }
 }
