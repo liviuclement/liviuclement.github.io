@@ -1,0 +1,93 @@
+.welcome{
+    margin: auto;
+    background-color: lightgray;
+    height: 30px;
+    width: 300px;
+    text-align: center;
+    padding-top: 7px;
+    border-radius: 10px;
+}
+.mainblock{
+    padding-top: 0;
+    margin: auto;
+    margin-top: 30px;
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+}
+
+.secondmainblock{
+    margin: -19px 0 0 5px;
+}
+
+td{
+    height:50px;
+    width:50px;
+    background: lightgray;
+    border: 1px solid black;
+    text-align: center;
+    font-size: 40px;
+}
+.givenCell{
+    background-color: yellow;/*rgba(255, 255, 255, 0.8);*/
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    font-size: 40px;
+    text-align: center;
+    padding: 0;
+}
+table{
+    margin-top: 24px;
+
+    border-spacing: 0;
+}
+td:first-child{
+    border-left: 2px solid black;
+}
+
+td:nth-child(3n){
+    border-right: 2px solid black;
+}
+tr:first-child td{
+    border-top: 2px solid black;
+
+}
+tr:nth-child(3n) td{
+    border-bottom: 2px solid black;
+
+}
+
+.selectedCell{
+    background: lime;
+}
+
+.redCell{
+    background: red;
+}
+/*ambele clase*/
+.givenCell.selectedCell {
+    background: red;
+}
+
+/*elementele cu clasa2 care au parinte clasa1*/
+.clasa1 > div.clasa2 {
+
+}
+
+tr:first-child td:first-child{
+    border-top-left-radius: 16px;
+}
+
+tr:first-child td:last-child{
+    border-top-right-radius: 16px;
+}
+
+tr:last-child td:first-child{
+    border-bottom-left-radius: 16px;
+}
+
+tr:last-child td:last-child{
+    border-bottom-right-radius: 16px;
+}
