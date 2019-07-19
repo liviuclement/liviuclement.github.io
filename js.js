@@ -5,12 +5,11 @@ function changeColor()
     console.log($(this));
     $(".selectedCell").removeClass("selectedCell");
     $(this).addClass("selectedCell");
-    
+
 }
 $(document).ready(function() {
     $('td').attr("tabindex", "0");
     $('td').click(changeColor);
-
     console.log($("#" + 11).text());
     for(var i = 0; i < 9; i++) {
         var temp = [];
@@ -19,6 +18,7 @@ $(document).ready(function() {
         }
         matrix.push(temp);
     }
+
 
 });
 let previousId = 0;
@@ -69,8 +69,8 @@ document.onkeydown = function (e) {
         case "Backspace":
         {
             if (!$("#" + id).hasClass("givenCell")) {
-                var i = id.substring(0,1) - 1;
-                var j = id.substring(1,2) - 1;
+                var i = id.substring(0, 1) - 1;
+                var j = id.substring(1, 2) - 1;
                 matrix[i][j] = "-";
                 $("#" + id).text("");
                 deleteRedOnLine(id);
@@ -79,8 +79,15 @@ document.onkeydown = function (e) {
                 verifyLine(id);
                 verifyColumn(id);
                 verifySquare(id);
-            }
 
+                $(".smecherie").each(function () {
+                    console.log($(this).attr('id'));
+                    verifyLine($(this).attr('id'));
+                    verifyColumn($(this).attr('id'));
+                    verifySquare($(this).attr('id'));
+                })
+                $("#" + id).removeClass("smecherie");
+            }
             break;
         }
         case "1":
@@ -141,6 +148,7 @@ function verifyLine(id) {
                 count++;
                 if (count > 0) {
                     $("#" + (i + 1) + (x + 1)).addClass("redCell");
+                    $("#" + (i + 1) + (x + 1)).addClass("smecherie");
                 }
             }
         }
@@ -197,6 +205,7 @@ function verifyColumn(id) {
                 count++;
                 if (count > 0) {
                     $("#" + (x + 1) + (j + 1)).addClass("redCell");
+                    $("#" + (x + 1) + (j + 1)).addClass("smecherie");
                 }
             }
         }
@@ -224,6 +233,7 @@ function verifySquare(id)
                     count++;
                     if (count > 0)
                         $("#" + (x + 1) + (y + 1)).addClass("redCell");
+                    $("#" + (x + 1) + (y + 1)).addClass("smecherie");
                 }
             }
     }
