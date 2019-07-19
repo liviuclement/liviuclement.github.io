@@ -121,6 +121,13 @@ document.onkeydown = function (e) {
                 verifyColumn(id);
                 verifySquare(id);
                 previousId = id;
+                 $(".smecherie").each(function () {
+                    console.log($(this).attr('id'));
+                    verifyLine($(this).attr('id'));
+                    verifyColumn($(this).attr('id'));
+                    verifySquare($(this).attr('id'));
+                })
+                $("#" + id).removeClass("smecherie");
             }
 
             break;
